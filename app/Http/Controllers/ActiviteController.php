@@ -20,6 +20,9 @@ class ActiviteController extends Controller
 
         return $activites;
     }
+
+
+
     public function index()
     {
         $activites = Activite::latest()->paginate(5);
@@ -62,9 +65,9 @@ class ActiviteController extends Controller
         //activite::create($request->all());
        
       //  activite->gestionnaires_id = 8;
-      // echo $request->get('description')
-      echo $request->get('nom');
-       dd();
+       //echo $request->get('description');
+      //echo $request->get('nom');
+       //dd();
         $activite = new activite([
             'libelle' => $request->get('libelle'),
             'description'=> $request->get('description'),
@@ -161,4 +164,8 @@ class ActiviteController extends Controller
         return redirect()->route('activites.index')
                         ->with('success','activites deleted successfully');
     }
+
+    //detail
+
+
 }

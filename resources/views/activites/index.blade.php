@@ -112,7 +112,7 @@
                             <form action="{{ route('activites.destroy',$activite->id) }}" method="POST">
               
                                 <a class="btn btn-primary" href="{{ route('activites.edit',$activite->id) }}">Edit</a>
-                                <a class="btn btn-secondary" href="{{ route('activites.details',$activite->id) }}">Détails activités</a>
+                                <a class="btn btn-info" href="{{ route('activites.show',$activite->id) }}">details</a>
                                 @csrf
                                 @method('DELETE')
   

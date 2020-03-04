@@ -1,13 +1,13 @@
-@extends('users.layout')
+@extends('activites.layout')
    
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Modifier Séance</h2>
+                <h2>Modifier Activite</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('activites.index') }}"> Retour</a>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
         </div>
     @endif
   
-    <form action="{{ route('users.update',$user->id) }}" method="POST">
+    <form action="{{ route('activites.update',$activite->id) }}" method="POST">
         @csrf
     
         @method('PUT')
@@ -34,57 +34,49 @@
             
                 <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>nom:</strong>
-                        <input type="text" name="nom" class="form-control" value="{{$user->nom}}" placeholder="nom">
+                            <strong>libelle:</strong>
+                        <input type="text" name="libelle" class="form-control" value="{{$activite->libelle}}" placeholder="libelle">
                         </div>
                     </div>
                     
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>prenom:</strong>
-                            <input type="text" name="prenom" class="form-control"  value="{{$user->prenom}}" placeholder="prenom">
+                            <strong>description:</strong>
+                            <input type="text" name="description" class="form-control"  value="{{$activite->description}}" placeholder="description">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>telephone:</strong>
-                            <input type="int" name="telephone" class="form-control" value="{{$user->telephone}}" placeholder="telephone">
+                            <strong>nom:</strong>
+                            <input type="text" name="nom" class="form-control" value="{{$activite->nom}}" placeholder="nom">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>email:</strong>
-                            <input type="email" name="email" class="form-control" value="{{$user->email}}" placeholder="email">
+                            <strong>montant:</strong>
+                            <input type="double" name="montant" class="form-control" value="{{$activite->montant}}" placeholder="montant">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>ddn:</strong>
-                            <input type="date" name="ddn" class="form-control" value="{{$user->ddn}}" placeholder="ddn">
+                            <strong>avance:</strong>
+                            <input type="double" name="avance" class="form-control" value="{{$activite->avance}}" placeholder="avance">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>adresse:</strong>
-                            <input type="text" name="adresse" class="form-control"  value="{{$user->adresse}}"placeholder="adresse">
+                            <strong>datedebut:</strong>
+                            <input type="date" name="datedebut" class="form-control"  value="{{$activite->datedebut}}"placeholder="datedebut">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>role:</strong>
-                            <select name="role" class="form-control">
-                                <option value="1">Admin</option>
-                                <option value="0">Gestionnaire</option>
-                            </select>
-                           
+                            <strong>datefin:</strong>
+                            <input type="date" name="datefin" class="form-control"  value="{{$activite->datefin}}"placeholder="datefin">
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>password:</strong>
-                            <input type="text" name="password" class="form-control" value="{{$user->password}}" placeholder="password">
-                        </div>
-                    </div>
+                    
+                   
                     
                         
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

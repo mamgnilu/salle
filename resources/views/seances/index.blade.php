@@ -1,30 +1,5 @@
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Princesse fitness</title>
-  <!-- base:css -->
-  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="css/style.css">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
-  <style>
-  #horloge{
-    width:100px;
-    height:20px;
-    color:black;
-  }
-  </style>
-</head>
+@include('layout.header')
 <body>
   <div class="container-scroller d-flex">
     <!-- partial:./partials/_sidebar.html -->
@@ -96,10 +71,10 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>enregistrer users</h2>
+                            <h2>enregistrer seances</h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn btn-success" href="{{ route('users.create') }}"> Creer un user</a>
+                            <a class="btn btn-success" href="{{ route('seances.create') }}"> Creer une seance</a>
                         </div>
                     </div>
                 </div>
@@ -113,50 +88,37 @@
                 <table class="table table-bordered">
                     <tr>
                       <th>No</th>
-                      <th>NOM</th>
-                      <th>PRENOM</th>
-                      <th>TELEPHONE</th>
-                      <th>EMAIL</th>
-                      
+                      <th>TAUTHORAIRE</th>
+                      <th>MONTANT</th>
+                      <th>DUREE</th>
                      
-                      <th>ADRESSE</th>
-                     
-                      
-                      
-                      
-                      
                       <th width="250px">ACTION</th>
                   </tr>
-                  @foreach ($users as $user)
+                  @foreach ($seances as $seance)
                   <tr>
                       <td>{{ ++$i }}</td>
-                      <td>{{ $user->nom }}</td>
-                      <td>{{ $user->prenom }}</td>
-                      <td>{{ $user->telephone }}</td>
-                      <td>{{ $user->email }}</td>
-                      <td>{{ $user->adresse }}</td>
-                     
-                     
-
-
+                      <td>{{ $seance->tautHoaire }}</td>
+                      <td>{{ $seance->montant }}</td>
+                      <td>{{ $seance->duree }}</td>
                         <td>
                           
-                            <form action="{{ route('users.destroy',$user->id) }}" method="POST">
+                            <form action="{{ route('seances.destroy',$seance->id) }}" method="POST">
               
-                                <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
+                                <a class="btn btn-primary" href="{{ route('seances.edit',$seance->id) }}">Edit</a>
                                 @csrf
                                 @method('DELETE')
   
                                 <button type="submit" class="btn btn-danger" onclick="return myConfirmation();">Delete</button>
+                                
                             </form>
                         </td>
                     </tr>
                     @endforeach
                 </table>
               
-                {!! $users->links() !!}
+                {!! $seances->links() !!}
                   
-            
+                <div style="height: 15vh;"></div>
             
         
         <!-- content-wrapper ends -->
