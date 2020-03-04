@@ -11,6 +11,6 @@ class AbonnesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Abonne::class, 30)->create();
     }
 }

@@ -11,6 +11,6 @@ class MoniteursTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Moniteur::class, 30)->create();
     }
 }

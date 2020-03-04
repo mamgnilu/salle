@@ -11,6 +11,6 @@ class SeancesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Seance::class, 30)->create();
     }
 }

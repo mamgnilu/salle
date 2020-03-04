@@ -11,6 +11,6 @@ class ValidationsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Validation::class, 30)->create();
     }
 }

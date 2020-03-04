@@ -12,9 +12,19 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function list()
+    {
+        $users=User::get();
+
+        return $users;
+    }
     public function index()
     {
-        //
+        $users = User::latest()->paginate(5);
+  
+        return view('users.index',compact('users'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -24,7 +34,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -35,7 +45,40 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+           
+            'nom' => 'required',
+            'prenom' => 'required',
+            'telephone' => 'required',
+            'email' => 'required',
+            //'remember_token' => 'required',
+            'ddn' => 'required',
+            'adresse' => 'required',
+            'role' => 'required',
+            'password' => 'required',
+        ]);
+        // $id = Auth::id();
+        //user::create($request->all());
+        
+      //  $user->gestionnaires_id = 8;
+        $user = new User([
+            'nom' => $request->get('nom'),
+            'prenom'=> $request->get('prenom'),
+            'telephone'=> $request->get('telephone'),
+            'email'=> $request->get('email'),
+            //'remember_token'=> $request->get('remember_token'),
+            'ddn'=> $request->get('ddn'),
+            'adresse'=> $request->get('adresse'),
+            'role'=> $request->get('role'),
+            'password'=> $request->get('password'),
+            
+            //'gestionnaires_id'=> 8
+          ]);
+          $user->save();
+   
+        return redirect()->route('users.index')
+                        ->with('success','user created successfully.');
+
     }
 
     /**
@@ -46,7 +89,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('users.show',['user'=>$user]);
     }
 
     /**
@@ -57,7 +100,12 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        //echo $user;
+      // dd();
+        //$birthday = date('Y/m/d', strtotime($user->ddn));
+    $birthday = $user->ddn;
+         
+        return view('users.edit',compact('user','birthday'));
     }
 
     /**
@@ -69,7 +117,27 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            // 'gestionnaires_id' => 'required',
+            'nom' => 'required',
+            'prenom' => 'required',
+            'telephone' => 'required',
+            'email' => 'required',
+            //'remember_token' => 'required',
+            'ddn' => 'required',
+            'adresse' => 'required',
+            'role' => 'required',
+            'password' => 'required',
+         ]);
+ 
+         
+         $user = User::find($user->id);
+        
+         //$user->update($request->all());
+         
+         return redirect()->route('users.index')
+                         ->with('success','user updated successfully');
+ 
     }
 
     /**
@@ -80,6 +148,10 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+       // SweetAlert::warning('Warning Message', 'Optional Title');
+        $user = User::find($user->id);
+        $user->delete();
+        return redirect()->route('users.index')
+                        ->with('success','users deleted successfully');
     }
 }

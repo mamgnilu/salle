@@ -12,5 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layout.default');
 });
+
+Route::get('/abonnes/list','AbonneController@list')->name('abonnes.list');
+Route::resource('users','UserController');
+//::resource('gestionnaires','GestionnaireController');
+Route::resource('abonnes','AbonneController');
+Route::resource('evalutions','EvalutionController');
+Route::resource('moniteurs','MoniteurController');
+Route::resource('activites','ActiviteController');
+Route::resource('seances','SeanceController');
+Route::resource('validations','AbonnementController');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
