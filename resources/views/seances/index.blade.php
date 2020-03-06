@@ -36,7 +36,7 @@
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                <img src="images/faces/face5.jpg" alt="profile"/>
+                <img src="images/bb4.jpg" alt="profile"/>
                 <span class="nav-profile-name">Administrateur</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -71,7 +71,7 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>enregistrer seances</h2>
+                            <h2>enregistrer seance</h2>
                         </div>
                         <div class="pull-right">
                             <a class="btn btn-success" href="{{ route('seances.create') }}"> Creer une seance</a>
@@ -88,23 +88,24 @@
                 <table class="table table-bordered">
                     <tr>
                       <th>No</th>
-                      <th>TAUTHORAIRE</th>
-                      <th>MONTANT</th>
+                      <th>TAUXHOAIRE</th>
                       <th>DUREE</th>
-                     
+                      
+
                       <th width="250px">ACTION</th>
                   </tr>
                   @foreach ($seances as $seance)
                   <tr>
                       <td>{{ ++$i }}</td>
-                      <td>{{ $seance->tautHoaire }}</td>
-                      <td>{{ $seance->montant }}</td>
+                      <td>{{ $seance->tauxHoaire }}</td>
                       <td>{{ $seance->duree }}</td>
+                      
                         <td>
                           
                             <form action="{{ route('seances.destroy',$seance->id) }}" method="POST">
               
                                 <a class="btn btn-primary" href="{{ route('seances.edit',$seance->id) }}">Edit</a>
+                                
                                 @csrf
                                 @method('DELETE')
   

@@ -7,7 +7,6 @@
 namespace App;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -17,7 +16,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $id
  * @property string $uuid
  * @property int $tauxHoaire
- * @property float $montant
  * @property Carbon $duree
  * @property int $activites_id
  * @property string $deleted_at
@@ -25,7 +23,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon $updated_at
  * 
  * @property Activite $activite
- * @property Collection|Validation[] $validations
  *
  * @package App
  */
@@ -36,7 +33,6 @@ class Seance extends Model
 
 	protected $casts = [
 		'tauxHoaire' => 'int',
-		'montant' => 'float',
 		'activites_id' => 'int'
 	];
 
@@ -47,7 +43,6 @@ class Seance extends Model
 	protected $fillable = [
 		'uuid',
 		'tauxHoaire',
-		'montant',
 		'duree',
 		'activites_id'
 	];
@@ -55,10 +50,5 @@ class Seance extends Model
 	public function activite()
 	{
 		return $this->belongsTo(Activite::class, 'activites_id');
-	}
-
-	public function validations()
-	{
-		return $this->hasMany(Validation::class, 'seances_id');
 	}
 }

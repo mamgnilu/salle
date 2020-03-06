@@ -1,5 +1,4 @@
 
-
 @include('layout.header')
 <body>
   <div class="container-scroller d-flex">
@@ -69,67 +68,67 @@
       <div class="main-panel">
         <div class="content-wrapper">
           
-            <div class="row">
-                <div class="col-lg-12 margin-tb">
-                    <div class="pull-left">
-                        <h2>Créer Seance</h2>
-                    </div>
-                    <div class="pull-right">
-                        <a class="btn btn-primary" href="{{ route('seances.index') }}"> Retour</a>
-                    </div>
+          <div class="row">
+            <div class="col-lg-12 margin-tb">
+                <div class="pull-left">
+                    <h2>Créer une Seance</h2>
+                </div>
+                <div class="pull-right">
+                    <a class="btn btn-primary" href="{{ route('seances.index') }}"> Retour</a>
                 </div>
             </div>
-               
-                  
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <strong>Warning!</strong> Please check your input code<br><br>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-               
-            <form action="{{ route('seances.store') }}" method="POST">
-                @csrf
-                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong><i class="fas fa-notes-medical "></i>tautHoaire:</strong>
-                            <input type="int" name="tautHoaire" class="form-control" placeholder="tautHoaire">
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>montant:</strong>
-                            <input type="double" name="montant" class="form-control" placeholder="montant">
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>duree:</strong>
-                            <input type="time" name="duree" class="form-control" placeholder="duree">
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        @foreach ($seances as $activite)
-                      <select class="custom-select" name="seances_id">      
-                        <option selected>Activite</option>
-                      <option value="{{$activite->id}}">{{$activite->nom}}</option>
-                      </select>
-                      @endforeach
-                    </div>    
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+           
+              
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <strong>Erreur!</strong> SVP veuillez saisir les bonnes informations<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+           
+        <form action="{{ route('seances.store') }}" method="POST">
+            @csrf
+             <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong><i class="fas fa-notes-medical"></i>tauxHoraire:</strong>
+                        <input type="int" name="tauxHoaire" class="form-control" placeholder="tauxHoaire">
                     </div>
                 </div>
-               
-            </form>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>duree:</strong>
+                        <input type="time" name="duree" class="form-control" placeholder="duree">
+                    </div>
+                </div>
+                
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                        
+                  <select class="custom-select" name="activites_id">      
+                    <option value="">--Choisir une activite--</option>
+                    @foreach ($activites as $activite)
+                  <option value="{{$activite->id}}">{{$activite->nom}}</option>
+
+                  @endforeach
+                  </select>
+      
+                </div>
+                
+              
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+           
+        </form>
         
 
-<div style="height: 20vh;"></div>
+<div style="height: 15vh;"></div>
           @include('layout.footer')
         
         <!-- content-wrapper ends -->

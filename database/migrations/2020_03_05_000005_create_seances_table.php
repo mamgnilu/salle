@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAbonnesTable extends Migration
+class CreateSeancesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'abonnes';
+    public $tableName = 'seances';
 
     /**
      * Run the migrations.
-     * @table abonnes
+     * @table seances
      *
      * @return void
      */
@@ -24,16 +24,17 @@ class CreateAbonnesTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->char('uuid', 36)->nullable();
-            $table->string('motivation')->nullable();
-            $table->unsignedBigInteger('users_id');
+            $table->integer('tauxHoaire')->nullable();
+            $table->time('duree')->nullable();
+            $table->unsignedBigInteger('activites_id');
 
-            $table->index(["users_id"], 'fk_abonnes_users1_idx');
+            $table->index(["activites_id"], 'fk_seances_activites1_idx');
             $table->softDeletes();
-            $table->timestamps();
+            $table->nullableTimestamps();
 
 
-            $table->foreign('users_id', 'fk_abonnes_users1_idx')
-                ->references('id')->on('users')
+            $table->foreign('activites_id', 'fk_seances_activites1_idx')
+                ->references('id')->on('activites')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

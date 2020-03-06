@@ -83,7 +83,7 @@
                   
             @if ($errors->any())
                 <div class="alert alert-danger">
-                    <strong>Warning!</strong> Please check your input code<br><br>
+                    <strong>Erreur!</strong> SVP! veuillez saisir les informations correctement<br><br>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -121,12 +121,15 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                        @foreach ($moniteurs as $moniteur)
+                        
                       <select class="custom-select" name="moniteurs_id">      
                         <option selected>Moniteur</option>
+                        @foreach ($moniteurs as $moniteur)
                       <option value="{{$moniteur->id}}">{{$moniteur->prenom}}--{{$moniteur->nom}}</option>
-                      </select>
+
                       @endforeach
+                      </select>
+          
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">

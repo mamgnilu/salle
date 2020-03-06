@@ -51,7 +51,6 @@ class ActiviteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-           
             'libelle' => 'required',
              'description' => 'required',
             'nom' => 'required',
@@ -68,7 +67,7 @@ class ActiviteController extends Controller
        //echo $request->get('description');
       //echo $request->get('nom');
        //dd();
-        $activite = new activite([
+        $activite = new Activite([
             'libelle' => $request->get('libelle'),
             'description'=> $request->get('description'),
             'nom'=> $request->get('nom'),
@@ -76,14 +75,11 @@ class ActiviteController extends Controller
             'avance'=> $request->get('avance'),
             'datedebut'=> $request->get('datedebut'),
             'datefin'=> $request->get('datefin'),
-            
             'moniteurs_id'=> $request->get('moniteurs_id'),
           ]);
           $activite->save();
-   
         return redirect()->route('activites.index')
                         ->with('success','activite created successfully.');
-
     }
 
     /**
@@ -136,7 +132,7 @@ class ActiviteController extends Controller
          
          $activite = Activite::find($activite->id);
         
-         //activite->update($request->all());
+         $activite->update($request->all());
          
          return redirect()->route('activites.index')
                          ->with('success','activite updated successfully');

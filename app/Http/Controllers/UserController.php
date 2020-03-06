@@ -51,7 +51,6 @@ class UserController extends Controller
             'prenom' => 'required',
             'telephone' => 'required',
             'email' => 'required',
-            //'remember_token' => 'required',
             'ddn' => 'required',
             'adresse' => 'required',
             'role' => 'required',
@@ -66,7 +65,6 @@ class UserController extends Controller
             'prenom'=> $request->get('prenom'),
             'telephone'=> $request->get('telephone'),
             'email'=> $request->get('email'),
-            //'remember_token'=> $request->get('remember_token'),
             'ddn'=> $request->get('ddn'),
             'adresse'=> $request->get('adresse'),
             'role'=> $request->get('role'),
@@ -118,12 +116,11 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            // 'gestionnaires_id' => 'required',
+           
             'nom' => 'required',
             'prenom' => 'required',
             'telephone' => 'required',
             'email' => 'required',
-            //'remember_token' => 'required',
             'ddn' => 'required',
             'adresse' => 'required',
             'role' => 'required',

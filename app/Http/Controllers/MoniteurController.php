@@ -120,7 +120,7 @@ class MoniteurController extends Controller
          
          $moniteur = Moniteur::find($moniteur->id);
         
-         //moniteur->update($request->all());
+         $moniteur->update($request->all());
          
          return redirect()->route('moniteurs.index')
                          ->with('success','moniteur updated successfully');

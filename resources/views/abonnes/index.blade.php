@@ -1,8 +1,4 @@
 
-
-
-
-
 @include('layout.header')
 <body>
   <div class="container-scroller d-flex">
@@ -96,9 +92,9 @@
               <th>NOM</th>
               <th>PRENOM</th>
               <th>TELEPHONE</th>
-              <th>EMAIL</th>
-              <th>DDN</th>
               <th>ADRESSE</th>
+              <th>MOTIVATION</th>
+
              
               
               
@@ -112,9 +108,8 @@
               <td>{{ $abonne->nom }}</td>
               <td>{{ $abonne->prenom }}</td>
               <td>{{ $abonne->telephone }}</td>
-              <td>{{ $abonne->email }}</td>
-              <td>{{ $abonne->ddn }}</td>
               <td>{{ $abonne->adresse }}</td>
+              <td>{{ $abonne->motivation }}</td>
                 <td>
                   
                     <form action="{{ route('abonnes.destroy',$abonne->id) }}" method="POST">

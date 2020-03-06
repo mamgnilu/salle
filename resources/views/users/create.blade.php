@@ -29,7 +29,7 @@
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong><i class="fas fa-notes-medical    "></i>:</strong>
+                <strong><i class="fas fa-notes-medical    "></i>nom:</strong>
                 <input type="text" name="nom" class="form-control" placeholder="nom">
             </div>
         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Seance;
+use App\Activite;
 use Illuminate\Http\Request;
 
 class SeanceController extends Controller
@@ -34,8 +35,8 @@ class SeanceController extends Controller
      */
     public function create()
     {
-        $seances = Seance::all();
-        return view('seances.create',compact('seances'));
+        $activites = Activite::all();
+        return view('seances.create',compact('activites'));
     }
 
     /**
@@ -46,26 +47,18 @@ class SeanceController extends Controller
      */
     public function store(Request $request)
     {
+   //echo 'sdfsdsd';
+       //dd($request);
         $request->validate([
-           
-            'tautHoaire' => 'required',
-             'montant' => 'required',
-            'duree' => 'required',
-            
-            
+            'tauxHoaire' => 'required',
+                 'duree' => 'required',
+          'activites_id' => 'required',
         ]);
-        // $id = Auth::id();
-        //seance::create($request->all());
-       
-      //  seance->gestionnaires_id = 8;
-       //echo $request->get('description');
-      //echo $request->get('nom');
-       //dd();
+
         $seance = new Seance([
-            'tautHoaire' => $request->get('tautHoaire'),
-            'montant'=> $request->get('montant'),
-            'duree'=> $request->get('duree'), 
-            'activites_id'=> $request->get('activites_id'),
+            'tauxHoaire' => $request->get('tauxHoaire'),
+                 'duree' => $request->get('duree'), 
+          'activites_id' => $request->get('activites_id'),
           ]);
           $seance->save();
    
@@ -110,8 +103,8 @@ class SeanceController extends Controller
         $request->validate([
            
            
-            'tautHoaire' => 'required',
-             'montant' => 'required',
+            'tauxHoaire' => 'required',
+             //'montant' => 'required',
             'duree' => 'required',
             
          ]);

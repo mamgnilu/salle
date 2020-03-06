@@ -73,7 +73,7 @@
           <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>Authentificatiion</h2>
+                    <h2>Créer un abonné</h2>
                 </div>
                 <div class="pull-right">
                     <a class="btn btn-primary" href="{{ route('abonnes.index') }}"> Retour</a>
@@ -84,7 +84,7 @@
               
         @if ($errors->any())
             <div class="alert alert-danger">
-                <strong>Warning!</strong> Please check your input code<br><br>
+                <strong>Erreur!</strong> veuillez saisir les bonnes informations svp!<br><br>
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -114,18 +114,7 @@
                         <input type="int" name="telephone" class="form-control" placeholder="telephone">
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>email:</strong>
-                        <input type="email" name="email" class="form-control" placeholder="email">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>ddn:</strong>
-                        <input type="date" name="ddn" class="form-control" placeholder="ddn">
-                    </div>
-                </div>
+                
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>adresse:</strong>
@@ -135,26 +124,12 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>motivation:</strong>
-                        <textarea id="w3mission" rows="4" cols="50"></textarea>
-                        <!--<input type="textarea" name="motivation" class="form-control" placeholder="motivation">-->
+                        <!--<textarea id="w3mission" rows="4" cols="50"></textarea>-->
+                        <input type="textarea" name="motivation" class="form-control" placeholder="motivation">
+                        <input type="hidden" name="users" value="1">
                     </div>
                 </div>
-               <!-- <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>role:</strong>
-                        <select name="role" class="form-control">
-                            <option value="1">Admin</option>
-                            <option value="0">Gestionnaire</option>
-                        </select>
-                       
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>password:</strong>
-                        <input type="text" name="password" class="form-control" placeholder="password">
-                    </div>
-                </div>-->
+              
                 
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                         <button type="submit" class="btn btn-primary">Submit</button>

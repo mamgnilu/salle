@@ -16,8 +16,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * 
  * @property int $id
  * @property string $uuid
- * @property string $motivation
+ * @property string $nom
  * @property int $users_id
+ * @property string $prenom
+ * @property string $telephone
+ * @property string $adresse
+ * @property string $motivation
  * @property string $deleted_at
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -39,8 +43,12 @@ class Abonne extends Model
 
 	protected $fillable = [
 		'uuid',
-		'motivation',
-		'users_id'
+		'nom',
+		'users_id',
+		'prenom',
+		'telephone',
+		'adresse',
+		'motivation'
 	];
 
 	public function user()
